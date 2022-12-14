@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block header %}
+    <h1>header</h1>
+{% endblock %}
+    
+{% block main %}
+    <table class="table table-striped container">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>longName</th>
+                <th>longBusinessSummary</th>
+                <th>sector</th>
+                <th>currentPrice</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>{{symbol}}</td>
+                <td>{{data["longName"]}}</td>
+                <td>{{data["longBusinessSummary"]}}</td>
+                <td>{{data["sector"]}}</td>
+                <td>{{data["currentPrice"]}}</td>
+            </tr>
+ 
+        </tbody>
+    </table>
+{% endblock %}  

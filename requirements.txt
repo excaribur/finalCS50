@@ -1,0 +1,13 @@
+cs50
+Flask
+Flask-Session
+requests
+yfinance
+
+
+
+
+longName
+sector
+longBusinessSummary
+currentPrice
