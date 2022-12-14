@@ -13,20 +13,28 @@
         <thead>
             <tr>
                 <th>Symbol</th>
-                <th>longName</th>
-                <th>longBusinessSummary</th>
-                <th>sector</th>
+                <th>Name</th>
+                <th>Note</th>
+                <th>Sector</th>
                 <th>currentPrice</th>
+                <th>buyPrice</th>
+                <th>resistancePrice</th>
+                <th>supportPrice</th>
+                <th>status</th>
             </tr>
         </thead>
         <tbody>
 
             <tr>
-                <td>{{symbol}}</td>
-                <td>{{data["longName"]}}</td>
-                <td>{{data["longBusinessSummary"]}}</td>
-                <td>{{data["sector"]}}</td>
-                <td>{{data["currentPrice"]}}</td>
+                <td>{{stock["symbol"]}}</td>
+                <td>{{stock["name"]}}</td>
+                <td>note</td>
+                <td>{{stock["sector"]}}</td>
+                <td>{{stock["price"]}}</td>
+                <td>buyPrice</td>
+                <td>resistancePrice</td>
+                <td>supportPrice</td>
+                <td>status</td>
             </tr>
  
         </tbody>
