@@ -5,7 +5,37 @@
 {% endblock %}
 
 {% block header %}
-    <h1>header</h1>
+    <div class = "text-center">
+        <p>The Stock Exchange of Thailand</p>
+        <form action="/" method="post">
+            <div class="mb-3">
+                <input autocomplete="off" class="form-control mx-auto w-auto" name="quote" placeholder="Symbol" type="text">
+            </div>
+            <button class="btn btn-dark" type="submit">Quote</button>
+        </form>
+  
+    {% if message %}
+        <div class="my-5 center">
+            <label class="mx-2">{{data}}</label>
+            {% if "You got it" in {{message}} %}
+                <button class="btn btn-secondary" type="button">Delete</button>
+            {% else %}
+                <button class="btn btn-secondary" type="button">Add</button>
+            {% endif %} 
+        </div>
+    
+    {% endif %}
+    
+    <div class="my-3 center">
+        <div class="form-check form-switch col-2 w-auto mx-3">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+            <label class="form-check-label" for="flexSwitchCheckChecked">Near Resistance</label>
+        </div>
+        <div class="form-check form-switch col-2 w-auto mx-3">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+            <label class="form-check-label" for="flexSwitchCheckChecked">Near Support</label>
+        </div>
+    </div>      
 {% endblock %}
     
 {% block main %}
@@ -16,26 +46,33 @@
                 <th>Name</th>
                 <th>Note</th>
                 <th>Sector</th>
-                <th>currentPrice</th>
-                <th>buyPrice</th>
-                <th>resistancePrice</th>
-                <th>supportPrice</th>
-                <th>status</th>
+                <th>Resistance</th>
+                <th>Price</th>
+                <th>Support</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
-
+            {% for row in stock %}
             <tr>
-                <td>{{stock["symbol"]}}</td>
-                <td>{{stock["name"]}}</td>
-                <td>note</td>
-                <td>{{stock["sector"]}}</td>
-                <td>{{stock["price"]}}</td>
-                <td>buyPrice</td>
-                <td>resistancePrice</td>
-                <td>supportPrice</td>
-                <td>status</td>
+                <td>{{row["symbol"]}}</td>
+                <td>{{row["name"]}}</td>
+                <td>{{row["note"]}}</td>
+                <td>{{row["sector"]}}</td>
+                <td>{{row["resistance"]}}</td>
+                <td>{{row["price"] | THB}}</td>
+                <td>{{row["support"]}}</td>
+                
+                <td>
+                    <div class="center p-2">
+                       {% if row["status"] != "monitor" %}
+                            <button class="btn btn-light mx-1" type="button">Monitor</button>
+                            <button class="btn btn-light mx-1" type="button">Delete</button>         
+                       {% endif %}
+                    </div>
+                </td>
             </tr>
+            {% endfor %}
  
         </tbody>
     </table>
