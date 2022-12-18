@@ -19,39 +19,48 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">NoteInvest</a>
+              <a class="navbar-brand fw-bolder" href="/follow">NoteInvest</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
+              
               <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/">Select</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/watch">Watch</a>
-                  </li>
-                </ul>
-                <ul class="navbar-nav ms-auto mt-2">
-                  <li class="nav-item  d-flex justify-content-center align-items-center"><span class="badge bg-secondary">username</span></li>
-                </ul>
+                {% if session["user_id"] %}
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link" href="/">Select</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/follow">Follow</a>
+                    </li>
+                  </ul>
+                  <ul class="navbar-nav ms-auto mt-2">
+                    <li class="nav-item  d-flex justify-content-center align-items-center">
+                      <span class="badge bg-success">{{session["user_id"] | getUsername}}</span></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                  </ul>
+                {% else %}
+                  <ul class="navbar-nav ms-auto mt-2">
+                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                  </ul>
+                {% endif %}
+                
               </div>
             </div>
           </nav>
 
-
-        <header class="container-fluid mt-5 mb-3">
-            {% block header %}{% endblock %}
-        </header>
-        
+        {% block header %}{% endblock %}
+       
         <main class="container-fluid py-2 text-center">
             {% block main %}{% endblock %}
         </main>
 
-        <footer class="mb-5 small text-center text-muted">
-            Data provided by <a href="https://finance.yahoo.com/">yahoo finance</a>
+        <footer class="mb-5 small text-center text-mute">
+            <div>Data provided by <a href="https://finance.yahoo.com/">yahoo finance</a></div>
+            <div>Data provided by <a href="https://www.settrade.com/">settrade</a></div>
         </footer>
 
     </body>

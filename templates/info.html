@@ -5,10 +5,78 @@
 {% endblock %}
 
 {% block header %}
-    <p>watch graph and calculation</p>
-    <p>setting resistance support and note ,show summary graph(or link)</p>
+    
 {% endblock %}
     
 {% block main %}
-   
+     <div class="wrapper">
+        <div class="name"> 
+            <div class="fs-4 fw-bolder mt-5">{{stock['name']}}</div>
+            <div class="fs-5">{{stock['symbol']}}</div>
+            <!-- <div class="fs-5">Sector: {{stock['sector']}}</div> -->
+        </div>
+        <div class="chart d-flex align-items-center justify-content-center mt-5">
+            <!--https://www.freecodecamp.org/news/how-to-use-html-to-open-link-in-new-tab/-->
+            <div>
+                <a class="link-primmary " href="https://finance.yahoo.com/chart/{{stock['symbol']}}.BK" 
+                target="_blank" rel="noopener noreferrer">Go to Graph Chart</a>
+            </div>
+        </div>
+        <div class="chart d-flex align-items-center justify-content-center mb-5">
+            <div>
+                <a class="link-primmary " href="https://www.settrade.com/th/equities/quote/{{stock['symbol']}}/overview" 
+                target="_blank" rel="noopener noreferrer">Go to Summary (settrade)</a>
+            </div>
+        </div>
+        <div class="container my-3">   
+            <div class="row justify-content-center">
+              <div class="col-4 p-3">
+                <div class="price mb-3 bgmain border-0 rounded p-4">
+                    <form action="/save?symbol={{stock['symbol']}}" method="post">       
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Resistance Price</span>
+                                <input class="form-control" min="0" step=0.01 name="resistance" 
+                                placeholder="{{stock['resistance']}}" value="{{stock['resistance']}}" type="number">
+                                <span class="input-group-text">฿</span>
+                            </div>
+        
+                            <div class="my-3">
+                                Current Price is {{stock["price"] | THB}}
+                            </div>
+        
+                            <div class="input-group mb-3">
+                                <span class="input-group-text mx-auto w-auto">Support Price</span>
+                                <input class="form-control" min="0" step=0.01 name="support" 
+                                placeholder="{{stock['support']}}" value="{{stock['support']}}"  type="number">
+                                <span class="input-group-text">฿</span>
+                            </div>
+        
+                            <div class="input-group my-3">
+                                <span class="input-group-text">Note</span>
+                                <textarea class="form-control" aria-label="With textarea" name="note" 
+                                placeholder="{{stock['note']}}" >{{stock['note']}}</textarea>
+                            </div>
+                 
+                            <button class="btn btn-light" type="submit">Save</button>
+                    </form>
+        
+                    <div class="center mt-3">
+                        {% if stock["status"] != "follow" %}
+                             <form action="/follow" method="post">
+                                 <input type="hidden" name="follow" value="{{stock['symbol']}}">
+                                 <button class="btn btn-light mx-1" type="submit">Follow</button>
+                             </form> 
+                             <form action="/delete" method="post">
+                                 <input type="hidden" name="delete" value="{{stock['symbol']}}">
+                                 <button class="btn btn-light mx-1" type="submit">Delete</button>   
+                             </form>
+                        {% endif %}
+                     </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+      </div>
+      
 {% endblock %}  

@@ -3,11 +3,15 @@ Flask
 Flask-Session
 requests
 yfinance
+pandas-datareader
+beautifulsoup4
+pytest
 
 
 
 
-longName
-sector
-longBusinessSummary
-currentPrice
+
+this scrip to print in log
+        app.logger.info("######################")
+        app.logger.info(row["symbol"])
+        app.logger.info("######################")

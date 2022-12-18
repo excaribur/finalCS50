@@ -3,3 +3,37 @@
     justify-content: center;
     align-items: center;
 }
+
+/* for summary show */
+/* .wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(auto, auto);
+}
+.name {
+    padding: 25px;
+    text-align: start;
+    grid-column: 1;
+    grid-row: 1;
+}
+.summary {
+    padding: 30px;
+    text-align: start;
+    grid-column: 2/4;
+    grid-row: 1/4;
+}
+.chart {
+    grid-column: 1;
+    grid-row: 2;
+}
+.price {
+    padding: 25px;
+    grid-column: 1;
+    grid-row: 3;
+} */
+
+.bgmain {
+    background: rgba(146, 224, 234, 0.664);
+    text-decoration-color: rgb(90, 97, 97);
+  }
