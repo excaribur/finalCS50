@@ -1,5 +1,5 @@
 # NoteInvest
-#### Video Demo: https://youtu.be/DI5G-smHmzE
+#### Video Demo: https://youtu.be/Rbyc7n3IDDs
 
 #### Description:
 Hi everyone. I would like to show my a final project of CS50 course. My project is like a notebook or diary to note your interested stocks.Also, you can save technical price such as resistance price or support price.
