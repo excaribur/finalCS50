@@ -17,8 +17,3 @@ CREATE TABLE users (
                     hash TEXT NOT NULL, 
                     percent NUMERIC NOT NULL DEFAULT 0
                     );
-
-INSERT INTO stock (symbol, note)
-            VALUES ("D",
-             "ooooo oooooo ooooo oooooo oooooo ooooo");
-
